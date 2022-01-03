@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= movie.title %> </title>
+    <link rel='stylesheet' href='/css/style.css' />
+
+</head>
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House">
+    </figure>
+    <h1><%= movie.title %> </h1>    
+    <br>
+    <p>RATING: <%= movie.rating %> </p>
+    <p>AWARDS: <%= movie.awards %> </p>
+    <p>LENGTH: <%= movie.length + ' min'%> </p>
+    <p>RELEASE DATE: <%= movie.release_date %> </p>
+    <p>GENRE: <%= movie.genre?.name %> </p>
+    <P>ACTORS:</P>
+    <ul>
+        <% movie.actors.forEach(actor=>{ %> 
+        <li><%= `${actor.first_name} ${actor.last_name}` %></li>
+        <% }) %> 
+    </ul>
+    <br>
+    <section>
+        <!--Aquí debe colocar los botones de Modificar - Borrar y Listado de Películas-->
+    </section>
+    <a href="/movies/edit/<%= movie.id %>" style="text-decoration: none; display: inline-block; padding: .5rem 1rem ; border: 3px solid gray; width: 5rem; border-radius: 10px;">Editar</a>
+    <a href="/movies/delete/<%= movie.id %>" style="text-decoration: none; display: inline-block; padding: .5rem 1rem ; border: 3px solid gray; width: 5rem; border-radius: 10px;">Eliminar</a>
+    <a href="/movies" style="text-decoration: none; display: inline-block; padding: .5rem 1rem ; border: 3px solid gray; width: auto; border-radius: 10px;">Listado de peliculas</a>
+
+</body>
+</html>

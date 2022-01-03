@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie add</title>
+    <link rel='stylesheet' href='/css/style.css' />
+</head>
+
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House">
+      </figure>
+    <h1 class="titulo">Agregar Película</h1>
+    <br>
+    <section class="formulario">
+        <form action="/movies/create" method="POST">
+            <label for="title">Title </label>
+            <p><input type="text" name="title" id="" value="<%= locals.old && old.title %>"></p>
+            <% if(locals.errors && errors.title) {%>
+                <span class="spanError"><%= errors.title.msg %></span> 
+                <% } %> 
+            <label for="rating">Rating </label>
+            <p><input type="text" name="rating" value="<%= locals.old && old.rating %>"></p>
+            <% if(locals.errors && errors.rating) {%>
+                <span class="spanError"><%= errors.rating.msg %></span> 
+                <% } %> 
+            <label for="awards">Awards </label>
+            <p><input type="text" name="awards" value="<%= locals.old && old.awards %>"></p>
+            <% if(locals.errors && errors.awards) {%>
+                <span class="spanError"><%= errors.awards.msg %></span> 
+                <% } %> 
+                <label for="release_date">Release date </label>
+                <p><input type="date" name="release_date" value="<%= locals.old && old.release_date %>"></p>
+                <% if(locals.errors && errors.release_date) {%>
+                    <span class="spanError"><%= errors.release_date.msg %></span> 
+                    <% } %> 
+                    
+                    <label for="length">Length </label>
+                    <p><input type="text" name="length" value="<%= locals.old && old.length %>"></p>
+                    <% if(locals.errors && errors.length) {%>
+                        <span class="spanError"><%= errors.length.msg %></span> 
+                        <% } %> 
+            <label for="genreID">Genre </label>
+            <p>
+                <select name="genre_id" id="">
+                    <option value="" disabled selected>- select genre - </option>
+                    <% allGenres.forEach(genre => { %>
+                    <option value="<%= genre.id %>" <%=locals.old && genre.id == old.genre_id ? "selected" : null  %>><%= genre.name %></option>
+                    <% }); %>
+                </select>
+            </p>
+            <% if(locals.errors && errors.genre_id) {%>
+                <span class="spanError"><%= errors.genre_id.msg %></span> 
+                <% } %> 
+            <br>
+            <p> <button class="botonAgregar" type="submit">Agregar</button>
+            
+            <a  class="botonVolver" href="/movies">Listado de Películas</a></p>
+        </form>
+    </section>
+    
+</body>
+
+</html>
